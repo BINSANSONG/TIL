@@ -1,9 +1,9 @@
 /* process */
 //system structure
-// console.log(process.env);
+console.log(process.env);
 
 // arguments
-console.log(process.argv);
+// console.log(process.argv);
 
 // program exit
 process.exit(0);

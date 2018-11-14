@@ -7,21 +7,31 @@ mongoose.connect('mongodb://localhost/hello-mongo',{ useNewUrlParser: true })
 //   : String, Number, Date, Buffer, Boolean, ObjectID, Array
 
 const courseSchema = new mongoose.Schema({
-    name: String,
+    name: {type: String, required: true},
     author: String,
-    tags: [ String ],
+    tags: {
+        type:Array,
+        //custom Validata
+        validate:{
+            validator:function(v){return v&&v.length > 0},
+            message: 'You have to input tags',
+        }
+    },
     date: { type: Date, default: Date.now},
     isPublished: Boolean,
 });
 
+
 const Course = mongoose.model('Course',courseSchema);
 
 // CRUD CREATE
+
+// CREATE
 async function createCourse(){
     const course = new Course({
-        name: 'DApp',
-        author: 'john',
-        tags: ['Ethereum', 'Blockchain', 'DApp'],
+        name: 'nodenode',
+        author: 'binginb',
+        tags: [],
         isPublished: false,
     });
     
@@ -35,8 +45,9 @@ async function createCourse(){
     //     .then(result=>console.log(result))
     //     .catch(error=>console.log(error));
 }
+createCourse();
 
-
+// READ
 async function getCourses(){
     const courses = await Course
     //.find({price: {$gt:10}})
@@ -47,4 +58,34 @@ async function getCourses(){
     console.log(courses);
 }
 
-getCourses();
+// UPDATE
+// 1. Query find first -> change -> save
+async function updateCourse(id){
+    const course = await Course.findById(id);
+    if(!course) return;
+
+    course.author = 'binsan';
+    course.tags=['song','bin','san'];
+
+    const result = await course.save();
+    console.log(result);
+}
+// updateCourse('5bea63caa4f6c50e58ab7d90');
+// 2. Update first
+async function updateCourses(){
+    const result = await Course.updateMany({isPublished:true},{
+        $set: {
+            author:'bing',
+        }
+    });
+    console.log(result);
+}
+// updateCourses();
+
+// Delete
+async function removeCourse(id){
+    const result = await Course.deleteOne({_id:id});
+    console.log(result);
+}
+
+// removeCourse('5bea63caa4f6c50e58ab7d90');

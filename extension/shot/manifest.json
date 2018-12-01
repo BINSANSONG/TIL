@@ -1,0 +1,24 @@
+{
+  "name": "Keyboard Pin",
+  "version": "0.3",
+  "description": "Creates a keyboard shortcut (Alt + Shift + P) to toggle the pinned state of the currently selected tab",
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+  "web_accessible_resources": ["action.js"],
+  "permissions":["tabs","*://*/*"],
+  "commands": {
+    "toggle-pin": {
+      "suggested_key": { "default": "Alt+Shift+P" },
+      "description": "Toggle tab pin"
+    }
+  },
+  "content_scripts":[
+    {
+      "matches":["*://*/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "manifest_version": 2
+}

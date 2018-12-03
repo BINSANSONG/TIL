@@ -1,0 +1,21 @@
+{
+  "name": "My Extension",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {},
+  "background": {
+    "scripts": ["app/background.js"]
+  },
+  "content_scripts" : [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["/static/js/2.chunk.js","/static/js/content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    "resource/weapon/*.png",
+    "resource/weapon_mark/*.png"
+  ],
+  "optional_permissions": ["https://sam-hap.herokuapp.com/*"],
+  "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
+}

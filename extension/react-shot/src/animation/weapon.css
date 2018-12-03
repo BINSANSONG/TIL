@@ -1,0 +1,18 @@
+.weapon-cursor-container {
+  position: absolute;
+  z-index: 1;
+}
+.cursor {
+  /* transform: translateX(-50%) translateY(-50%); */
+}
+.cursor.target-point {
+  background-color: red;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+}
+
+.cursor.weapon-img{
+  margin-top: 50px;
+  margin-left: 20px;
+}

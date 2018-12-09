@@ -9,9 +9,12 @@
   "content_scripts" : [
     {
       "matches": ["<all_urls>"],
-      "css": ["/static/css/content.css"],
-      "js": ["/static/js/0.chunk.js","/static/js/3.chunk.js","/static/js/content.js"]
+      "js": ["/static/js/2.chunk.js","/static/js/content.js"]
     }
+  ],
+  "web_accessible_resources": [
+    "resource/weapon/*.png",
+    "resource/weapon_mark/*.png"
   ],
   "optional_permissions": ["https://sam-hap.herokuapp.com/*"],
   "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"

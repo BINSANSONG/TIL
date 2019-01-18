@@ -1,30 +1,38 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { AppRegistry, Image, FlatList, StyleSheet, Text, View } from 'react-native';
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={textstyles.container}>이건 제목입니다</Text>
-        <Text>ㅎㅎ 내가 만든 앱이지롱</Text>
-        <Text>리액트 네이티브 좋다</Text>
-        <Text>빨리빨리 공부해보자</Text>
+        <FlatList
+          data={[
+            {key: 'Devin'},
+            {key: 'Jackson'},
+            {key: 'James'},
+            {key: 'Joel'},
+            {key: 'John'},
+            {key: 'Jillian'},
+            {key: 'Jimmy'},
+            {key: 'Julie'},
+            {key: 'Naver'},
+          ]}
+          renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+        />
+        <Image source={{uri:'https://search.pstatic.net/sunny/?src=http%3A%2F%2Fwww.gs1.org%2F1%2Ftlkeys%2Fimages%2Fasset-46.png&type=b400'}} style={{width: 193, height: 110}}/>
       </View>
     );
   }
 }
 
-const textstyles = StyleSheet.create({
-  container: {
-    fontSize:25
-  },
-});
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+   flex: 1,
+   paddingTop: 22
   },
-});
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+})

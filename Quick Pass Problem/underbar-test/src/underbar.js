@@ -38,6 +38,8 @@
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
+    const len = array.length;
+    return n === undefined ? array[len-1] : array.slice(len<n ? 0 : len-n , len);
   };
 
   // Call iterator(value, key, collection) for each element of collection.

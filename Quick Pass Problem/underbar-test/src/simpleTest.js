@@ -1,10 +1,3 @@
-const _ = {
-    identity(val){
-        return val;
-    }
-}
-
-let x = {a:'A'};
-console.log(x);
-_.identity(x).a = 'B';
-console.log(x);
+let arr = [1,2,3,4,5];
+let arr2 = arr.slice(3,-1);
+console.log(arr2);

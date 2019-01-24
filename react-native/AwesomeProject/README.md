@@ -11,7 +11,7 @@
 - `Button` : 유저의 터치를 기반으로 한 버튼 입력 컨트롤, `onPress`를 통해 터치 동작을 설정, `title`로 버튼 이름 설정
 - 그 외 touchable components : `TouchableHighlight`, `TouchableOpacity`, `TouchableNativeFeedback`, `TouchableWithoutFeedback` 이 있고, props로 `onPress`, `onLongPress`을 줄 수 있다.
 - `ScrollView` : 스크롤할 수 있는 일반적 컴포넌트, 자식들이 같은 종류일 필요없고, `horizontal` 속성 줘서 가로 세로 스크롤 설정도 가능하다. 하나의 아이템으로 `ScrollView`를 구성하면 줌인 줌아웃을 할 수 있다. `maximumZoomScale` 혹은 `minimunZoomScale`를 옵션으로 줄 수 있다.
-
 - `FlatList` : `data`와 `renderItem` 두 props를 필요로 한다. `ScrollView`와 달리 현재 화면에 보여지는 요소만 렌더링한다. 모든 요소를 한번에 렌더링 하는 것이 아니다.
 - `SectionList` : iOS의 `UITableView`처럼 리스트가 섹션별로 나눠져서 표현된다. 가나다 혹은 abc로 구분되어진 연락처가 예시
 - Networking : `fetch`나 `request`, `axios`, `XMLHttpRequest` 아무거나 써도 된다. 웹소켓 `WebSoket` 또한 지원한다.
+- NativeBase : mobile App용 디자인 키트, 디자인은 기본빵하고 기능만 빠르게 구현하고 싶을 때 참 좋을 듯, 다만 expo 환경에서 사용할 때 환경설정이 약간 까탈스러워서 헤맸다.

@@ -28,6 +28,12 @@
 
 - 비동기 함수 사용해서 로딩할 때는 state랑 component마운트 관련 함수 써서 처리 해줘야 한다.
 
+- `import React from 'react' : ` `React`를 직접 사용하는 일이 없어도 꼭 써줘야 app이 동작한다.
+
+- `HomeTab.js`에서 `componentWillMount`함수는 deprecated 되었으니 `componentDidMount`를 앞으로 사용, 자세한 내용은 [React의 LifeCycle API][https://velopert.com/3631]를 찾아보자.
+
+- `fetch`와 `axios`의 장단점을 비교한 블로거님이 계신다. [잘 참고해보자][https://hoorooroob.tistory.com/entry/React-React-Naive-TIPS-axios-%EC%99%80-fetch-%EC%96%B4%EB%96%A4-%EA%B2%83%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%A0%EA%B9%8C]
+
 - 새로고침이 심지어 컴포넌트로 제공된다.. _~~갓 리액트~~_ [사용법][https://facebook.github.io/react-native/docs/refreshcontrol]도 있고 해보니 `react-navigation`에서 `<Content refreshControl={...}/>` 에다가도 쓸 수 있다. 리스트형 컴포넌트는 다 될 듯. 쉽게 해결하여 기쁘다.
 
   - onRefresh 함수 작성할 때 `onRefresh () {this.setState(...)}`으로 하면 `this.setState is not a function` 뜬다. 그런데 `onRefresh = () => { ... }`으로 작성하면 에러 없이 잘 된다. 저번에 분명히 수업 때 했었는데 정리해놨었는지 모르겠다. 찾아보자. 혹은 책에 있을지도. 지금 리프레싱이 두번되는데 왜그런지 모르겠다. 왜그런지 내일 한번 생각해보자. `setTimeout()`을 썼더니 두번된다. 이게 feeds에 항상 배열값이 차있어서 그렇구만. 리프레싱할때 refreshing state가 변하니까 무조건 다시 렌더링 하는것 같다. faker는 로딩이 없어서 두번바뀌는 것 처럼 보이는 건가
@@ -55,7 +61,7 @@
     }
     ```
 
-    - `rcc` : 
+  - `rcc` : 
 
     ```js
     import React, { Component } from 'react'

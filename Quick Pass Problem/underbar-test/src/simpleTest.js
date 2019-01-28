@@ -1,26 +1,29 @@
-// let arr = [1,2,3,4,5];
-// let obj = {a:'A',b:'B',c:'C', 2:'2'};
-// console.log(Array.isArray(arr));
-// console.log(Array.isArray(obj));
+/*
+let arr = [1,2,3,4,5];
+let obj = {a:'A',b:'B',c:'C', 2:'2'};
+console.log(Array.isArray(arr));
+console.log(Array.isArray(obj));
 
-// console.log(arr.hasOwnProperty(0));
-// console.log(obj.hasOwnProperty('a'));
+console.log(arr.hasOwnProperty(0));
+console.log(obj.hasOwnProperty('a'));
 
-// for (const key in arr) {
-//   if (arr.hasOwnProperty(key)) {
-//     const element = arr[key];
-//     console.log(key)
-//     console.log(element);
-//   }
-// }
-// for (const key in obj) {
-//   if (obj.hasOwnProperty(key)) {
-//     const element = obj[key];
-//     console.log(key);
-//     console.log(element);
-//   }
-// }
+for (const key in arr) {
+  if (arr.hasOwnProperty(key)) {
+    const element = arr[key];
+    console.log(key)
+    console.log(element);
+  }
+}
+for (const key in obj) {
+  if (obj.hasOwnProperty(key)) {
+    const element = obj[key];
+    console.log(key);
+    console.log(element);
+  }
+}
+*/
 
+/*
 let _ = {};
 _.each = function(collection, iterator) {
   let isArray = Array.isArray(collection);
@@ -37,29 +40,29 @@ _.each = function(collection, iterator) {
       }
     }
 };
-// var letters = ['a', 'b', 'c'];
-// var iterations = [];
-// _.each(letters, function(letter, index) {
-//   iterations.push([letter, index]);
-// });
-// console.log(iterations);
-// expect(iterations).to.eql([
-//   ['a', 0],
-//   ['b', 1],
-//   ['c', 2]
-// ]);
+var letters = ['a', 'b', 'c'];
+var iterations = [];
+_.each(letters, function(letter, index) {
+  iterations.push([letter, index]);
+});
+console.log(iterations);
+expect(iterations).to.eql([
+  ['a', 0],
+  ['b', 1],
+  ['c', 2]
+]);
 
 
-// var letters = ['a', 'b', 'c'];
-// var iterations = [];
-// _.each(letters, function(letter, index, collection) {
-//   iterations.push([letter, index, collection]);
-// });
-// expect(iterations).to.eql([
-//   ['a', 0, letters],
-//   ['b', 1, letters],
-//   ['c', 2, letters]
-// ]);
+var letters = ['a', 'b', 'c'];
+var iterations = [];
+_.each(letters, function(letter, index, collection) {
+  iterations.push([letter, index, collection]);
+});
+expect(iterations).to.eql([
+  ['a', 0, letters],
+  ['b', 1, letters],
+  ['c', 2, letters]
+]);
 
 
 var iterations = [];
@@ -78,3 +81,12 @@ _.each(letters, function(letter, index, collection) {
 
 console.log(iterations);
 // expect(iterations).to.not.include('Do not iterate over me!');
+
+*/
+/*
+const someFunc = (value) => value;
+console.log(typeof(someFunc));
+console.log(someFunc);
+console.log(!someFunc);
+console.log(typeof(!someFunc));
+*/

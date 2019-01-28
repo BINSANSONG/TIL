@@ -28,24 +28,56 @@
 
 - 비동기 함수 사용해서 로딩할 때는 state랑 component마운트 관련 함수 써서 처리 해줘야 한다.
 
+- 새로고침이 심지어 컴포넌트로 제공된다.. _~~갓 리액트~~_ [사용법][https://facebook.github.io/react-native/docs/refreshcontrol]도 있고 해보니 `react-navigation`에서 `<Content refreshControl={...}/>` 에다가도 쓸 수 있다. 리스트형 컴포넌트는 다 될 듯. 쉽게 해결하여 기쁘다.
+
+  - onRefresh 함수 작성할 때 `onRefresh () {this.setState(...)}`으로 하면 `this.setState is not a function` 뜬다. 그런데 `onRefresh = () => { ... }`으로 작성하면 에러 없이 잘 된다. 저번에 분명히 수업 때 했었는데 정리해놨었는지 모르겠다. 찾아보자. 혹은 책에 있을지도. 지금 리프레싱이 두번되는데 왜그런지 모르겠다. 왜그런지 내일 한번 생각해보자. `setTimeout()`을 썼더니 두번된다. 이게 feeds에 항상 배열값이 차있어서 그렇구만. 리프레싱할때 refreshing state가 변하니까 무조건 다시 렌더링 하는것 같다. faker는 로딩이 없어서 두번바뀌는 것 처럼 보이는 건가
+
 - 유용한 자동완성(react용 snippets를 설치했다)
 
-  - [링크][https://code.visualstudio.com/docs/editor/userdefinedsnippets] : 직접 만들 수도 있다.
-  - `imrc` : `import React, { Component } from 'react'`
-  - `rcc` : 
+  - [직접 만들 수도 있다][https://code.visualstudio.com/docs/editor/userdefinedsnippets]
 
-  ```js
-  import React, { Component } from 'react'
-  
-  export default class App extends Component {
-    render() {
-      return (
-        <div>
-        
-        </div>
-      )
+  - `imrc` : `import React, { Component } from 'react'`
+
+  - `rnc`:
+
+    ```js
+    import React, { Component } from 'react'
+    import { Text, View } from 'react-native'
+    
+    export default class HomeTab extends Component {
+      render() {
+        return (
+          <View>
+            <Text> textInComponent </Text>
+          </View>
+        )
+      }
     }
-  }
-  ```
+    ```
+
+    - `rcc` : 
+
+    ```js
+    import React, { Component } from 'react'
+    
+    export default class App extends Component {
+      render() {
+        return (
+          <div>
+          
+          </div>
+        )
+      }
+    }
+    ```
 
   - `import statement`에서 모듈 이름을 먼저 쓰고 가져올 컴포넌트를 입력하면 자동완성이 지원된다.
+
+- faker를 활용한 instagram 따라 만들기
+
+  - `expo init instagram-faker`
+  - `npm i react-navigation native-base @expo/vector-icons`
+  - `react-navigation`을 활용해서 만든다. `app.js`에는 `creatStackNavigator`를 사용하여 스택을 만들고 `createAppContainer`를 활용해서 앱화면을 출력한다.
+  - 메인화면에 위쪽 상단 네비게이션을 `static navigationOptions`를 이용해 만든다.
+  - 하단 네비게이션은 `createMaterialTopTabNavigation`을 통해 만든다.
+  - 

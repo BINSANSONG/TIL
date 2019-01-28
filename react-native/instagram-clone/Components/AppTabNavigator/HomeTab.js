@@ -1,16 +1,25 @@
 import React, { Component } from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, RefreshControl } from "react-native";
 import { Container, Content, Icon, Button } from "native-base";
 import CardComponent from "../CardComponent";
 export default class HomeTab extends Component {
 
   state = {
-    feeds:[]
+    feeds:[],
+    refreshing:false,
   }
 
   componentWillMount() {
     this.fetchFeeds().then(feeds=>{
       this.setState({feeds});
+    });
+  }
+
+  onRefresh = () => {
+    this.setState({refreshing:true});
+    this.fetchFeeds().then(feeds=>{
+      this.setState({feeds:feeds, refreshing:false});
+      
     });
   }
 
@@ -42,7 +51,9 @@ export default class HomeTab extends Component {
   render() {
     return (
       <Container style={style.container}>
-        <Content>
+        <Content refreshControl={
+          <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh}/>
+        }>
           {
             this.state.feeds.map(feed=><CardComponent data={feed} key={feed.post_id}/>)
           }

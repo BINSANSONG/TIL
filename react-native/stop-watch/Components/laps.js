@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { Text, View } from 'react-native'
 
-export default function laps() {
-  return (
-    <div>
-      
-    </div>
-  )
+export default class Laps extends Component {
+  render() {
+    return (
+      <View>
+        <Text> textInComponent </Text>
+      </View>
+    )
+  }
 }

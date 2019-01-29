@@ -1,0 +1,14 @@
+{
+  "name": "react-native",
+  "version": "1.0.0",
+  "description": "[React Native Docs](https://facebook.github.io/react-native/docs/)를 참고하여 새로 알게 된 내용을 정리",
+  "main": "simpleTest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
+}

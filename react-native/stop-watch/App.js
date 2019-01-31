@@ -1,13 +1,7 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createAppContainer, createStackNavigator } from "react-navigation";
-import MainScreen from './Components/MainScreen';
-
-const appStackNavigator = createStackNavigator({
-  Main:{
-    screen:MainScreen
+import React, { Component } from 'react'
+import Setup from "./Components/Setup";
+export default class App extends Component {
+  render() {
+    return <Setup/>
   }
-});
-
-export default createAppContainer(appStackNavigator);
-
+}

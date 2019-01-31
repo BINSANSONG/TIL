@@ -1,29 +1,33 @@
 import React, { Component } from 'react'
-import { Text as RnText } from "react-native";
-import { Button, Text } from "native-base";
-import {Font} from "expo";
+import { Button, Text, View } from "native-base";
 
 export default class Buttons extends Component {
-  state={
-    loaded:false
-  }
-  componentDidMount() {
-    this.loadFonts();
-  }
-  async loadFonts() {
-    await Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
-    });
-    this.setState({ loaded: true });
-  }
-  render() {
-    if(!this.state.loaded){
-      return <RnText>로딩중</RnText>;
+
+  makeButtons = (timerState) =>{
+    if(timerState==='init') {
+      return <Button onPress={this.props.onStart}><Text>Start</Text></Button>;
+    }else if(timerState==='started'){
+      return (
+        <View style={{flex:1,flexDirection:'row',justifyContent:'space-around'}}>
+          <Button onPress={this.props.onLaps}><Text>Laps</Text></Button>
+          <Button onPress={this.props.onStop}><Text>Pause</Text></Button>
+        </View>
+      )
+    }else{
+      return (
+        <View style={{flex:1,flexDirection:'row',justifyContent:'space-around'}}>
+          <Button onPress={this.props.onReset}><Text>Reset</Text></Button>
+          <Button onPress={this.props.onResume}><Text>Resume</Text></Button>
+        </View>
+      )
     }
-    
-    return <Button><Text>Start</Text></Button>;
-    
+  }
+
+  render() {    
+    return (
+      <View style={{flex:1, flexDirection:'row', justifyContent:'center'}}>
+        {this.makeButtons(this.props.timerState)}
+      </View>
+    )
   }
 }

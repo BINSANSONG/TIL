@@ -1,12 +1,22 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-
+import React, { Component } from "react";
+import { Text, List, ListItem, Left, Right, Icon } from "native-base";
+import Timer from "./Timer";
 export default class Laps extends Component {
   render() {
     return (
-      <View>
-        <Text> textInComponent </Text>
-      </View>
-    )
+      <List
+        dataArray={this.props.laps}
+        renderRow={lap => (
+          <ListItem>
+            <Left>
+              <Timer interval={lap}/>
+            </Left>
+            <Right>
+              <Icon name="arrow-forward" />
+            </Right>
+          </ListItem>
+        )}
+      />
+    );
   }
 }

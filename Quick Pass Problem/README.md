@@ -11,4 +11,5 @@
 - `for in`에 대해서 : obj나 array 모두 잘 사용할 수 있는데, `_.each` 문제에서 array쪽을 기본 `for`말고 `for in`을 쓰면 틀리는 이유는 무엇일까? - array와 obj의 가장 큰 차이점, `key`는 `string`이고, `index`는 `integer`이다. `key`나 `index`를 `_.each`에서 쓸 때 array와 obj를 구분하지 않으면 `index`에 `string`이 들어가거나 하는 문제가 생긴다. 정확히 말하면 array는 obj이면서 array이고, 그냥 obj는 obj지만 array는 아니다. `index`로 `integer`를 쓰냐 안쓰냐의 차이밖에는 없는 것 같다. `typeof`를 사용해도 array는 `object`를 뱉어낸다. `someArray.someProperty = someValue` 또한 당연히 가능하다. 여기서 `someArray`에 대해 `for in`을 사용하면 `someProperty`의 값에 대해서도 `iterator`가 동작한다.
 - 매개변수로 함수를 줄 때, 예를 들면 `_.filter(collection, test)`에서 `test`가 `boolean`을 리턴하는 함수라고 해도, 당연히 `_.reject(collection,test)`를 만들때 `return _.filter(collection, !test)`를 하면 안된다. `test`는 반환된 값이 아니라 함수이기 때문에, `!test`는 함수가 아니게 된다. - 그럼 `!test`는 뭘까? `false`이다.
 - `_.uniq`구현에서 빈 배열을 생성하고 해당 array를 순회하면서 내가 이전에 넣지 않았다면 push하는 방식으로 구현했는데, 시간복잡도가 최악의 경우 n^2 가 된다. ~~머리가 안돌아갈 때는 무식하게 하는게 최고~~ `_.filter`같은 애들을 써서 더 좋은 방법으로 구현할 수 있을까?
--  
+- `node -e 'console.log("hello");'` 와 같이 입력하면 프롬프트에서 한줄명령을 바로 실행할 수 있다.
+- `_.every`를 구현하면서 처음으로 `_.identity`를 사용하였다. `iterator` 매개변수가 주어지지 않을 때, 기본적인 `iterator`로 쓰기 위해 썼다. 꼼수로 `true&&1`은 `1`이고, `1&&true`는 `true`이다. 왜 다른지는 모르겠는데 하여튼 이거 때문에 결과를 `boolean`으로 통일하기 위해 `!!`연산자 꼼수(?) 썼다.

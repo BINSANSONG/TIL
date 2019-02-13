@@ -1,6 +1,6 @@
 # React Native Basic
 
-[React Native Docs](https://facebook.github.io/react-native/docs/)를 참고하여 새로 알게 된 내용을 정리
+각종 자료와 실전 개발을 통해 알게된 지식들 의식의 흐름대로 기록
 
 - style props :  component마다 style props를 줘서 css 스타일을 지정할 수 있다. 
   - `flex` :flex는 부모 컴포넌트와 형제(?) 컴포넌트들의 관계로, 비율적인 크기가 결정된다. 화면의 크기에 따라 유동적으로 변하는, 반응형 화면 구성하기에 좋다. 만약에 자식 component에 flex를 활용했는데 부모 component에 flex나 fixed width 혹은 height가 없다면 부모의 dimension이 0이므로, 자식 component또한 화면에 표시되지 않는다. 
@@ -89,4 +89,44 @@
   - `react-navigation`을 활용해서 만든다. `app.js`에는 `creatStackNavigator`를 사용하여 스택을 만들고 `createAppContainer`를 활용해서 앱화면을 출력한다.
   - 메인화면에 위쪽 상단 네비게이션을 `static navigationOptions`를 이용해 만든다.
   - 하단 네비게이션은 `createMaterialTopTabNavigation`을 통해 만든다.
-  - 
+
+- `native-base`의 `<Button>` 컴포넌트가 당최 가운데로 안갔었다. `react-native-easy-grid`가 `expo`프로젝트에는 기본 내장되어있어서 그걸 쓰는데, 얘가 좋은 건 알겠는데 상위 컴포넌트에서 `alignItems:'center'`해도 자식놈의 버튼이 가운데로 가질 않았다. 버튼마다 `alignSelf:'center'`해줘야 가운데로 먹혔다. 얘 해결하는데 한시간 넘게 걸렸지만 그리드나 flexbox 응용 많이 해본 듯해서 무의미한 시간은 아닌듯. 그리고 웬만하면 기본 `react-native` 컴포넌트 쓰는게 좋다. 자체 스타일 때문에 스타일 수정이 힘들다. 
+
+- 호이스팅(hoisting) : 함수와 변수의 선언하는 코드는 마치 그 코드가 가장 위에 있는 듯이 동작하는 것.
+
+- 함수 표현식과 선언식 : `var func = variable => console.log(variable)`과 같은 형식이 함수 표현식.  함수도 객체(일급객체)라는 의미를 가지면서 매개변수로 함수를 쓸 수 있게 한다. ~~그런데 아직도 왜 선언식으로는 콜백을 줄 수 없는 경우가 생길까 의문~~
+
+- 클로져(closure) : 내부함수가 외부함수의 지역변수에 접근할 수 있고, 외부함수는 외부함수의 지역변수를 사용하는 내부함수가 소멸될 때 까지 소멸되지 않는 특성
+
+  ```js
+  var tabs = document.querySelectorAll('.tab');
+  var i;
+  
+  for (i = 0; i < tabs.length; i += 1) {
+    	tabs[i].onclick = function (event) {
+      	console.log(i); // 어느 탭을 클릭해도 항상 tabs.length (i 의 최종 값)이 출력
+    	};
+  }
+  ```
+
+  위 코드에서 왜 어느 탭을 클릭해도 항상 `i`의 최종값이 출력되는지 생각해보자.
+
+  함수가 호출되는 시점에서 `i`의 값이 무엇인지 생각해보면 된다. 
+
+  ```js
+  function tabsHandler(index) {
+      return function tabClickEvent(event) {
+          // 바깥 함수인 tabsHandler() 의 index 인자를 여기서 접근할 수 있다.
+          console.log(index); // 탭을 클릭할 때 마다 해당 탭의 index 값을 표시
+      };
+  }
+  
+  var tabs = document.querySelectorAll('.tab');
+  var i;
+  
+  for (i = 0; i < tabs.length; i += 1) {
+      tabs[i].onclick = tabsHandler(i);
+  }
+  ```
+
+  위 코드에서는 왜 해당 `i`의 값이 출력되는 것일까? 머리속으로 생각해볼 수록 헷갈리는 개념이지만 어렵다고 쫄 거 없이 다음에 또 보면 된다. 보다 보면 어느새 당연해지겠지.

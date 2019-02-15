@@ -23,9 +23,11 @@ export default class App extends React.Component {
     this.setState({ loaded: true });
   }
 
-  numIn = event => {
-    const type = event.target.name;
-    const val = event.target.value;
+  pad = n => n < 10 ? '0' + n : n;
+
+  numIn = (event, name) => {
+    const type = name;
+    const val = event.nativeEvent.text;
 
     const h = this.state.duration.hours();
     const m = this.state.duration.minutes();
@@ -61,6 +63,7 @@ export default class App extends React.Component {
   };
 
   render() {
+    console.log('app loading');
     if (!this.state.loaded) return <AppLoading />;
     return (
       <Container>
@@ -68,7 +71,6 @@ export default class App extends React.Component {
         <Grid>
           <Row
             style={{
-              backgroundColor: "blue",
               alignItems: "flex-end",
               justifyContent: "center"
             }}
@@ -76,14 +78,13 @@ export default class App extends React.Component {
             <Timer
               state={this.state.state}
               numIn={this.numIn}
-              h={this.state.duration.hours()}
-              m={this.state.duration.minutes()}
-              s={this.state.duration.seconds()}
+              h={this.pad(this.state.duration.hours())}
+              m={this.pad(this.state.duration.minutes())}
+              s={this.pad(this.state.duration.seconds())}
             />
           </Row>
           <Row
             style={{
-              backgroundColor: "yellow",
               alignItems: "flex-start",
               justifyContent: "center"
             }}

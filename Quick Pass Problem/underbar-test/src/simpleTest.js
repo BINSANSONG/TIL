@@ -90,3 +90,12 @@ console.log(someFunc);
 console.log(!someFunc);
 console.log(typeof(!someFunc));
 */
+
+function argu(obj) {
+  for (let index = 0; index < arguments.length; index++) {
+    console.log(arguments[index]);
+  }
+  console.log(obj);
+}
+
+argu({a:'A'},{b:'B',c:'C'},{d:'D'});

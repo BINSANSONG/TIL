@@ -1,22 +1,43 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import { Button, Icon } from 'native-base';
-import { createStackNavigator} from "react-navigation";
+import React, { Component } from "react";
+import { View } from "react-native";
+import { Button, Text } from "native-base";
+import { createStackNavigator } from "react-navigation";
+import { Ionicons } from "@expo/vector-icons";
 
 import Routine from "../components/Routine";
 import Search from "./Search";
 class Home extends Component {
-  static navigationOption = ({navigation}) => {
+  static navigationOptions = ({ navigation }) => {
     return {
-      headerRight:(<Button onPress={navigation.navigate('Search')}><Text>Search</Text></Button>)
-    }
-  }
+      headerLeft: (
+        <Ionicons
+          style={{ paddingLeft: 10 }}
+          onPress={() => navigation.openDrawer()}
+          name="md-menu"
+          size={30}
+        />
+      ),
+      headerRight: (
+        <Ionicons
+          style={{ paddingRight: 10 }}
+          onPress={() => navigation.navigate('Search')}
+          name="md-search"
+          size={30}
+        />
+      )
+    };
+  };
   render() {
     return (
-      <View>
-        <Button onPress={()=>this.props.navigation.navigate('Routine')}><Text>Routine</Text></Button>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Button
+          onPress={() => this.props.navigation.navigate("Routine")}
+          style={{ alignSelf: "center" }}
+        >
+          <Text>Routine</Text>
+        </Button>
       </View>
-    )
+    );
   }
 }
 

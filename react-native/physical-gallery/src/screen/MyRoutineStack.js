@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import { Button, Icon } from 'native-base';
+import { View } from 'react-native'
+import { Button, Icon, Text } from 'native-base';
 import { createStackNavigator } from "react-navigation";
 
 import Routine from "../components/Routine";
@@ -14,8 +14,8 @@ class MyRoutine extends Component {
   }
   render() {
     return (
-      <View>
-        <Button onPress={()=>this.props.navigation.navigate('Routine')}><Text>Routine</Text></Button>
+      <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+        <Button onPress={()=>this.props.navigation.navigate('Routine')} style={{alignSelf:'center'}}><Text>Routine</Text></Button>
       </View>
     )
   }

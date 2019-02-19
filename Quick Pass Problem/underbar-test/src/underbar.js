@@ -302,10 +302,11 @@
   _.memoize = function(func) {
     var memo = {};
     return function(){
-      if(!memo.hasOwnProperty(arguments)){
-        memo[arguments] = func.apply(this,arguments);
+      var arg = JSON.stringify(arguments);
+      if(!memo.hasOwnProperty(arg)){
+        memo[arg] = func.apply(this,arguments);
       }
-      return memo[arguments];
+      return memo[arg];
     }
   };
 
@@ -316,6 +317,11 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
+    var args;
+    [,,...args] = arguments;
+    setTimeout(() => {
+      return func.apply(this,args);
+    }, wait);
   };
 
 

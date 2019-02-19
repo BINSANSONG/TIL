@@ -100,19 +100,32 @@ console.log(typeof(!someFunc));
 
 // argu({a:'A'},{b:'B',c:'C'},{d:'D'});
 
-function test(){
+// function test(){
+//   return arguments;
+// }
+
+// var t1 = test(1,2,3);
+// var t2 = test(1,2,3);
+// console.log(t1===t2);
+// console.log(Object.is(t1,t2));
+// console.log(t1);
+// console.log(t2);
+// var test2 = {
+//   a:'a',
+// };
+// test2[t1] = 'b';
+// test2[t2] = 'c';
+// console.log(test2);
+
+function test() {
   return arguments;
 }
 
-var t1 = test(1,2,3);
-var t2 = test(1,2,3);
-console.log(t1===t2);
-console.log(Object.is(t1,t2));
-console.log(t1);
-console.log(t2);
-var test2 = {
-  a:'a',
-};
-test2[t1] = 'b';
-test2[t2] = 'c';
-console.log(test2);
+var t1 = { a:'A',b:'B'};
+var t2 = { a:1,b:2};
+var t3 = test(1,2,3);
+var t4 = test(2,3,4);
+console.log(JSON.stringify(t1));
+console.log(JSON.stringify(t2));
+console.log(JSON.stringify(t3));
+console.log(JSON.stringify(t4));

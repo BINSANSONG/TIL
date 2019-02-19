@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import Routine from "../components/Routine";
 import Search from "./Search";
+
 class Home extends Component {
   static navigationOptions = ({ navigation }) => {
     return {

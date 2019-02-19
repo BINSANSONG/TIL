@@ -6,12 +6,18 @@ import { createStackNavigator } from "react-navigation";
 import Routine from "../components/Routine";
 import Search from "./Search";
 class MyRoutine extends Component {
-  static navigationOption = ({navigation}) => {
+  static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle:'MyRoutine',
-      headerRight:(<Icon name='ios-search' onPress={navigation.navigate('Search')}/>)
-    }
-  }
+      headerLeft: (
+        <Ionicons
+          style={{ paddingLeft: 10 }}
+          onPress={() => navigation.openDrawer()}
+          name="md-menu"
+          size={30}
+        />
+      )
+    };
+  };
   render() {
     return (
       <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>

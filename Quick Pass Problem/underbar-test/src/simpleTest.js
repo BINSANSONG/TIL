@@ -91,11 +91,28 @@ console.log(!someFunc);
 console.log(typeof(!someFunc));
 */
 
-function argu(obj) {
-  for (let index = 0; index < arguments.length; index++) {
-    console.log(arguments[index]);
-  }
-  console.log(obj);
+// function argu(obj) {
+//   for (let index = 0; index < arguments.length; index++) {
+//     console.log(arguments[index]);
+//   }
+//   console.log(obj);
+// }
+
+// argu({a:'A'},{b:'B',c:'C'},{d:'D'});
+
+function test(){
+  return arguments;
 }
 
-argu({a:'A'},{b:'B',c:'C'},{d:'D'});
+var t1 = test(1,2,3);
+var t2 = test(1,2,3);
+console.log(t1===t2);
+console.log(Object.is(t1,t2));
+console.log(t1);
+console.log(t2);
+var test2 = {
+  a:'a',
+};
+test2[t1] = 'b';
+test2[t2] = 'c';
+console.log(test2);

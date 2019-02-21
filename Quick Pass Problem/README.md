@@ -53,3 +53,7 @@
 - `_.memoize` : `arguments`를 key로 바로 사용하려 했더니 안된다. 생각해보니 당연하다. key는 string이다. 들어가는 걸 테스트 해보니 key가 `'[object Arguments]'`라는 string이 된다. `argumemts`  에 대해서 페어링이 되어야 한다. 알고보니 간단한..ㅎㅎ 모를 때는 어려운거니까 꼭 알아두자. 객체자체를 key로 활용하려면 얘를 string으로 만들어야 한다. 객체가 string 형식으로 표현된 것이 뭐가 있을까? JSON이다. `JSON.stringify(obj)`를 통해 객체를 key로 만들 수 있다. 같은 내용을 가진 객체면 `===`연산자는 `false`를 출력하겠지만 JSON 형식으로 바꾸면 같아진다!
 
 - `_.delay` : `arguments`가 한번에 들어오지만 앞의 두 인자를 빼고 나머지 인자에 접근해야 할 때, `...`연산자를 통해 할당할 수 있다. `[,,...variable] = arguments`와 같이 쓸 수 있다. 
+
+- `_.shuffle` : `Array.prototype.slice`를 사용해서 입력 배열의 복사본을 만들었다. `slice`의 인자가 선택적이라 하나도 안넣으니까 원본 배열이랑 똑같은 애를 준다. MDN에서는 얕은 복사라고 하는데 얕은 복사 들어본 적은 있는데 정확히 기억은 안나
+
+- 

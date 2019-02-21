@@ -117,15 +117,72 @@ console.log(typeof(!someFunc));
 // test2[t2] = 'c';
 // console.log(test2);
 
-function test() {
-  return arguments;
-}
+// function test() {
+//   return arguments;
+// }
 
-var t1 = { a:'A',b:'B'};
-var t2 = { a:1,b:2};
-var t3 = test(1,2,3);
-var t4 = test(2,3,4);
-console.log(JSON.stringify(t1));
-console.log(JSON.stringify(t2));
-console.log(JSON.stringify(t3));
-console.log(JSON.stringify(t4));
+// var t1 = { a:'A',b:'B'};
+// var t2 = { a:1,b:2};
+// var t3 = test(1,2,3);
+// var t4 = test(2,3,4);
+// console.log(JSON.stringify(t1));
+// console.log(JSON.stringify(t2));
+// console.log(JSON.stringify(t3));
+// console.log(JSON.stringify(t4));
+
+// var fs = require('fs');
+// var input = fs.readFileSync('/dev/stdin').toString().split(' ');
+// console.log(parseInt(input[0])+parseInt(input[1]));
+
+
+// var n = 10;
+// var memo = [0,1,1];
+// function fibo(i){
+//   if(!!memo[i]) {
+//     return memo[i];
+//   }
+//   else{
+//     memo[i] = fibo(i-1)+fibo(i-2);
+//     return memo[i];
+//   }
+// }
+
+// console.log(fibo(n));
+
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// });
+
+// let input = [];
+
+// rl.on('line', function (line) {
+//     input.push(makearray(line));
+//   })
+//   .on('close', function () {
+//     console.log(input);
+//     process.exit();
+// });
+
+// function makearray(line){
+//   return line.split(' ').map(el=>parseInt(el));
+// }
+// function maze(arr){
+
+// }
+
+
+// var arr = [0,1];
+// var t = arr.pop();
+// var r = arr.pop();
+// var s = arr.pop();
+// console.log(t);
+// console.log(r);
+// console.log(s);
+// console.log(arr);
+
+var arr = [];
+arr.push([0,1],[3,4],[2,5],[2,4]);
+arr.sort();
+console.log(arr);

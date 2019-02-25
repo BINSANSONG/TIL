@@ -137,3 +137,7 @@
   - `StackNavigator` : App에서 겹치듯이 쌓이는 화면 네비게이터가 얘인듯, 어떤 버튼누르면 어떤 화면 뜨고하는, 위에 헤더가 있고, 뒤로가기 할 수 있고 하는
   - `DrawerNavigator` : 화면 왼쪽끝을 끄집어내듯이 드래그하면 따라나오는 메뉴.
   - `TabNavigator` : 화면 아래쪽이나 위쪽에서 탭을 터치하면 그 화면으로 넘어가는, 크롬의 탭과 같은 느낌
+
+- [스크럼](http://resoneit.blogspot.com/2012/10/blog-post_30.html) : 개발 일정 방법론인데, 일정을 잘게 쪼개고(반드시 테스트가능한 단위) 단기 목표를 위해 스프린트하고 또 다음 목표를 향해 스프린트하는 느낌의 방법. 내가 스스로 하는 것과 비슷한 것 같기도 하다. 몰랐던 점은 `장애가 되는 것은 무엇인가?`에 대해서 매일 의논한 다는 점.
+
+- react navigation에서 parameter 전달하기 : `this.props.navigation.navigate('RouteName',{param1:'some params'})`와 같이 전달하고, `navigation.getParam('param1','some default value')`로 받고 default도 설정가능.

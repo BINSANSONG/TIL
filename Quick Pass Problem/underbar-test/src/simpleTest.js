@@ -182,7 +182,14 @@ console.log(typeof(!someFunc));
 // console.log(s);
 // console.log(arr);
 
-var arr = [];
-arr.push([0,1],[3,4],[2,5],[2,4]);
-arr.sort();
-console.log(arr);
+// var arr = [];
+// arr.push([0,1],[3,4],[2,5],[2,4]);
+// arr.sort();
+// console.log(arr);
+
+function test(params) {
+  return params;
+}
+var tt = {};
+var t = 'test';
+console.log(typeof Object);

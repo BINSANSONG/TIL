@@ -57,3 +57,5 @@
 - `_.shuffle` : `Array.prototype.slice`를 사용해서 입력 배열의 복사본을 만들었다. `slice`의 인자가 선택적이라 하나도 안넣으니까 원본 배열이랑 똑같은 애를 준다. MDN에서는 얕은 복사라고 하는데 얕은 복사 들어본 적은 있는데 정확히 기억은 안나
 
 - `_.invoke` : 예를 들면 `Array`타입 변수와 `'sort'` 스트링을 인자로 넘겨 `Array.prototype.sort`한 것과 같은 결과를 가져다 준다. 지금은 그냥 넘어가는게 나을 거 같고 나중에 왜 `isFunc`을 `typeof`를 써서 구현하지 않았는지, 차이는 뭔지, 동작 과정은 어떻게 되는 건지 확인해보자.
+
+- `_.sortBy` : `Array.prototype.sort`에 대해서 다시 보게 되었다. 인자로 `comparator`함수를 줄 수 있는데, `function(a,b){if(a<b) return 1}` 과 같이 인자 두 개를 받아서 `1`,`-1`,`0`을 리턴하면 된다.

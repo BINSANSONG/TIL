@@ -59,3 +59,5 @@
 - `_.invoke` : 예를 들면 `Array`타입 변수와 `'sort'` 스트링을 인자로 넘겨 `Array.prototype.sort`한 것과 같은 결과를 가져다 준다. 지금은 그냥 넘어가는게 나을 거 같고 나중에 왜 `isFunc`을 `typeof`를 써서 구현하지 않았는지, 차이는 뭔지, 동작 과정은 어떻게 되는 건지 확인해보자.
 
 - `_.sortBy` : `Array.prototype.sort`에 대해서 다시 보게 되었다. 인자로 `comparator`함수를 줄 수 있는데, `function(a,b){if(a<b) return 1}` 과 같이 인자 두 개를 받아서 `1`,`-1`,`0`을 리턴하면 된다.
+
+- `_.flatten` : 문제를 다 풀긴 했는데 갑자기 의문이 들었다.  420번째줄에서 `_.flatten(item,results);`앞에 `results = ` 를 붙여줘서 대입을 해야하는 건 아닌가하고. 결론은 그럴 필요 없다! 클로져처럼 `_.each`안의 `_.flatten`이 `results`에 접근할 수 있으므로 리턴된 걸 대입해 주지 않아도 곧바로 `results`가 바뀐다.

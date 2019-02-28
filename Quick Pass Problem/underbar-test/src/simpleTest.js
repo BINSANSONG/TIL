@@ -187,9 +187,37 @@ console.log(typeof(!someFunc));
 // arr.sort();
 // console.log(arr);
 
-function test(params) {
-  return params;
+// function test(params) {
+//   return params;
+// }
+// var tt = {};
+// var t = 'test';
+// console.log(typeof Object);
+
+// var a1 = [1,2,3,4];
+// var a2 = [2,3,'a','b','c'];
+// var c1 = [true];
+// var argu = [a1,a2,c1];
+// var results = [];
+// for (let i = 0; i < a2.length; i++) {
+//   results[i] = argu.map(function(item){
+//     return item[i];
+//   });
+// }
+// console.log(results)
+
+function test(arr,result){
+  var results = result===undefined ? [] : result;
+  console.log(results);
+    arr.forEach(function(item){
+      if(Array.isArray(item)){
+        test(item,results);
+      }else{
+        results.push(item);
+      }
+    });
+    return results;
 }
-var tt = {};
-var t = 'test';
-console.log(typeof Object);
+var arr = [[1,2],3,[4,5,[6]]];
+var arr2 = test(arr);
+console.log(arr2);

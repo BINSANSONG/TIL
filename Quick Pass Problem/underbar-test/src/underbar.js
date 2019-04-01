@@ -320,7 +320,7 @@
     var args;
     [,,...args] = arguments;
     setTimeout(() => {
-      return func.apply(this,args);
+      func.apply(this,args);
     }, wait);
   };
 
@@ -429,7 +429,18 @@
   // every item shared between all the passed-in arrays.
   _.intersection = function() {
     var result = [];
-    
+    var first = arguments[0];
+    var left = Array.prototype.slice.call(arguments,1);
+    _.each(first, function(item){
+      var isContains = true;
+      for(var i=0;i<left.length;i++){
+        var tmpResult = _.contains(left[i],item);
+        isContains &= tmpResult; 
+        if(!tmpResult) break;
+      }
+      if(isContains) result.push(item);
+    });
+    return result;
   };
 
   // Take the difference between one array and a number of other arrays.

@@ -1,8 +1,3 @@
-// this is what you would do if you liked things to be easy:
-// var stringifyJSON = JSON.stringify;
-
-// but you don't so you're going to write it from scratch:
-
 var stringifyJSON = function(obj) {
   var result = '';
   var isArray = Array.isArray(obj);
@@ -42,3 +37,26 @@ var stringifyJSON = function(obj) {
 var isUnstringifiable = (obj) => {
   return typeof obj === 'function' || typeof obj === 'undefined';
 }
+
+var obj = {
+  a:'str',
+  b:0,
+  c:true,
+  d:null,
+  e:{
+    eA:'EASPORTS',
+    eB:10,
+  },
+  f:'str2',
+  g:{
+    gA:'gastbe',
+    gb:true
+  },
+  h:[3,4,'a','b'],
+  function:function(){},
+  undefined:undefined,
+}
+
+console.log(stringifyJSON(obj));
+console.log(JSON.stringify(obj));
+console.log(stringifyJSON(obj)===JSON.stringify(obj));

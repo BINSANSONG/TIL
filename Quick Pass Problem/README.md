@@ -2,6 +2,8 @@
 
 알고리즘 문제 풀이 대비 및 JS 학습용입니다. 두서가 없습니다.
 
+## underbar-test
+
 - [js 개념을 잘 설명해 놓은 블로그](https://www.zerocho.com/category/JavaScript?page=7)
 
 - `function.prototype.apply` : 맨처음에 작성하려했지만, 개념이 이해되질 않아 `_.once`를 구현하며 이제야 작성한다. 함수객체에도 내장 함수가 있다. 대표적으로 `call`, `apply`, `bind`. `call`과 `apply`는 함수를 호출하는 메소드이다. `call`은 `function.call(null,arg0,arg1,...)`과 같이, `apply`는 `function.apply(null,args)`와 같이 작성한다. 둘의 가장 큰 차이는 인수를 배열로 받느냐 아니냐의 차이. 맨처음 인수 `null` 의 자리에는 실행되는 객체를 넣는다. 보통 `this`나 `null`이 되겠지만 다른 객체의 함수를 지금 객체에서 사용해야 할 경우 필요하다. 예를들면
@@ -63,3 +65,9 @@
 - `_.flatten` : 문제를 다 풀긴 했는데 갑자기 의문이 들었다.  420번째줄에서 `_.flatten(item,results);`앞에 `results = ` 를 붙여줘서 대입을 해야하는 건 아닌가하고. ~~결론은 그럴 필요 없다! 클로져처럼 `_.each`안의 `_.flatten`이 `results`에 접근할 수 있으므로 리턴된 걸 대입해 주지 않아도 곧바로 `results`가 바뀐다.~~ 결론은 그렇게하면 results가 계속바뀌게 되므로 당연히 그렇게 하면 안된다. 처음 선언된 `results`에 계속 `push`해주면 된다.
 
 - `_.intersection` : 문제를 풀다가 쉽게 저지를만한 실수를 해서 기록해둬야겠다고 생각했다. 문제를 풀면서 `arguments`를 써야 했는데, 중간에 콜백을 쓰면서 그 안에서 위에서 쓴 `arguments`를 그대로 쓰려고 한 것. 당연히 상위 함수의 `arguments`와 콜백함수의 `arguments`는 다르다. 콜백안에서 접근하고 싶다면 당연히 따로 저장해서 접근해야할 것.
+
+- `_.throttle` : [제로초님 블로그](<https://www.zerocho.com/category/JavaScript/post/59a8e9cb15ac0000182794fa>)에서 우연히 읽은것이 나와 반가웠고 그래서 문제 이해도 쉽게하고 풀이도 쉽게 한 듯? 나름 구현하긴했는데 제로초님 코드는 좀 더 간결하다. 스크롤이벤트에 주로 적용한다.
+
+## recursion-test
+
+- `stringifyJSON` : `JSON.stringify`를 그대로 구현하면 된다. 생각보다 고려해야할게 많아서 시간이 오래 걸렸다. 처음엔 배열이 들어갈 수 있다는 사실을 잊었고, 또 다음엔 `function`이나 `undefined`가 들어가면 무시된다는 사실을 간과했다. ~~(사실만들기전에 테스트해보면서 알았는데 풀다가 까먹음..ㅎㅎ)~~ 처음 재귀함수를 구현할때는 맨 바닥에서 `Object` or `Array`로만 분기했는데 만들다보니 primitive 변수도 분기해야 훨씬 재귀함수스럽다는 걸 깨닫고 다시..ㅎ. 지금 코드를 봐선 중복되는 부분이 꽤 있으므로 리팩토링할 부분이 어느정도 보인다. 이걸 다시볼때 해보자. 

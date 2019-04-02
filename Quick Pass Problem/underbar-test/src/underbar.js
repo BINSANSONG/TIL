@@ -466,5 +466,17 @@
   //
   // Note: This is difficult! It may take a while to implement.
   _.throttle = function(func, wait) {
+    var shouldWait = false;
+    return function() {
+      if(shouldWait){
+        return;
+      }else{
+        shouldWait = true;
+        func(...arguments);
+        setTimeout(() => {
+          shouldWait = false;
+        }, wait);
+      }
+    }
   };
 }());

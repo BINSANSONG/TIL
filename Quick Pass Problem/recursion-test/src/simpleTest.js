@@ -1,3 +1,4 @@
+/* stringifyJSON.js
 var stringifyJSON = function(obj) {
   var result = '';
   var isArray = Array.isArray(obj);
@@ -60,3 +61,5 @@ var obj = {
 console.log(stringifyJSON(obj));
 console.log(JSON.stringify(obj));
 console.log(stringifyJSON(obj)===JSON.stringify(obj));
+
+*/

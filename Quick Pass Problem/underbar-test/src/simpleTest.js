@@ -206,18 +206,34 @@ console.log(typeof(!someFunc));
 // }
 // console.log(results)
 
-function test(arr,result){
-  var results = result===undefined ? [] : result;
-  console.log(results);
-    arr.forEach(function(item){
-      if(Array.isArray(item)){
-        test(item,results);
-      }else{
-        results.push(item);
-      }
-    });
-    return results;
-}
-var arr = [[1,2],3,[4,5,[6]]];
-var arr2 = test(arr);
-console.log(arr2);
+// function test(arr,result){
+//   var results = result===undefined ? [] : result;
+//   console.log(results);
+//     arr.forEach(function(item){
+//       if(Array.isArray(item)){
+//         test(item,results);
+//       }else{
+//         results.push(item);
+//       }
+//     });
+//     return results;
+// }
+// var arr = [[1,2],3,[4,5,[6]]];
+// var arr2 = test(arr);
+// console.log(arr2);
+
+memoize = function(func) {
+  const memo = {};
+  return function(){
+    const inputJSON = JSON.stringify(arguments);
+    if(!memo.hasOwnProperty(inputJSON)){
+      console.log(memo);
+      memo[inputJSON] = func(...arguments);
+      console.log(memo);
+    }
+    return memo[inputJSON];
+  }
+};
+
+const test = memoize((a,b)=>a+b);
+test(3,4)

@@ -222,18 +222,34 @@ console.log(typeof(!someFunc));
 // var arr2 = test(arr);
 // console.log(arr2);
 
-memoize = function(func) {
-  const memo = {};
-  return function(){
-    const inputJSON = JSON.stringify(arguments);
-    if(!memo.hasOwnProperty(inputJSON)){
-      console.log(memo);
-      memo[inputJSON] = func(...arguments);
-      console.log(memo);
-    }
-    return memo[inputJSON];
+// memoize = function(func) {
+//   const memo = {};
+//   return function(){
+//     const inputJSON = JSON.stringify(arguments);
+//     if(!memo.hasOwnProperty(inputJSON)){
+//       console.log(memo);
+//       memo[inputJSON] = func(...arguments);
+//       console.log(memo);
+//     }
+//     return memo[inputJSON];
+//   }
+// };
+
+// const test = memoize((a,b)=>a+b);
+// test(3,4)
+
+sortBy = function(collection, iterator) {
+  const cp = collection.slice();
+  if(typeof iterator === 'string'){
+    return cp.sort((a,b)=>{
+      return a[iterator] - b[iterator];
+    })
+  }else{
+    return cp.sort((a,b)=>{
+      return iterator(a) - iterator(b);
+    })
   }
 };
-
-const test = memoize((a,b)=>a+b);
-test(3,4)
+var list = ['one','two','three','four','five'];
+var sorted = sortBy(list,'length');
+console.log(sorted);
